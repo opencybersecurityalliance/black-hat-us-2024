@@ -1,0 +1,39 @@
+# setup Kestrel Jupyter
+kestrel_jupyter_setup
+
+# setup data from BH 2022 (backup hunt)
+git lfs install
+git clone https://github.com/opencybersecurityalliance/data-bucket-kestrel.git
+mv data-bucket-kestrel/sqlite/bh22.db data/bh22.db
+rm -rf data-bucket-kestrel
+
+# get mapping files for GoldenSAML
+git clone https://github.com/opencybersecurityalliance/kestrel-lang.git
+mv kestrel-lang/mapping-examples /tmp/
+rm -rf kestrel-lang
+
+# setup Kestrel config
+mkdir -p .config/kestrel
+mv config/* .config/kestrel/
+rmdir config
+
+# move all data according to the config
+mv data /tmp/demodata
+
+# move analytics according to the config
+mv analytics /tmp/
+
+# re-org the folder
+mv huntbooks/* ./
+rmdir huntbooks
+
+# unset pwd
+mkdir -p ~/.jupyter
+echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
+echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py
+
+# trust notebooks
+jupyter trust *.ipynb
+
+# clean up the binder itself
+rm -rf binder

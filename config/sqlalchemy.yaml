@@ -1,0 +1,50 @@
+connections:
+
+    goldensaml-onpremise:
+        url: sqlite:////tmp/demodata/onpremise.db
+        table_creation_permission: true
+
+    goldensaml-cloud:
+        url: sqlite:////tmp/demodata/cloud.db
+        table_creation_permission: true
+
+    bh22db:
+        url: sqlite:////tmp/demodata/bh22.db
+        table_creation_permission: true
+
+
+datasources:
+
+    GoldenSAML-WindowsEvents:
+        connection: goldensaml-onpremise
+        table: windows
+        timestamp: "TimeGenerated"
+        timestamp_format: "%Y-%m-%dT%H:%M:%S.%fZ"
+        data_model_map: "/tmp/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_WindowsEvents.yaml"
+
+    GoldenSAML-Microsoft365DefenderEvents:
+        connection: goldensaml-cloud
+        table: msdefender
+        timestamp: "Timestamp"
+        timestamp_format: "%Y-%m-%dT%H:%M:%S.%fZ"
+        data_model_map: "/tmp/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_Microsoft365DefenderEvents.yaml"
+
+    GoldenSAML-AADAuditEvents:
+        connection: goldensaml-cloud
+        table: aad
+        timestamp: "TimeGenerated"
+        timestamp_format: "%Y-%m-%dT%H:%M:%S.%fZ"
+        data_model_map: "/tmp/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_AADAuditEvents.yaml"
+
+    GoldenSAML-OfficeActivityEvents:
+        connection: goldensaml-cloud
+        table: office
+        timestamp: "TimeGenerated"
+        timestamp_format: "%Y-%m-%dT%H:%M:%S.%fZ"
+        data_model_map: "/tmp/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_OfficeActivityEvents.yaml"
+
+    PhishingAPT:
+        connection: bh22db
+        table: events
+        timestamp: "@timestamp"
+        timestamp_format: "%Y-%m-%dT%H:%M:%S.%fZ"

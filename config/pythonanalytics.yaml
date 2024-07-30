@@ -1,0 +1,7 @@
+profiles:
+    rare-event-detection:
+        module: /tmp/analytics/rare_event_detector.py
+        func: analytics
+    ask-AI:
+        module: /tmp/analytics/genai_simulator.py
+        func: analytics

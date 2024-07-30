@@ -1,0 +1,5 @@
+# latest jupyter-server runs lots of troubles, use <2
+jupyter-server==1.24.0
+jupyter-resource-usage==0.7.2
+
+kestrel-jupyter==2.0.0b2

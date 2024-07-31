@@ -5,7 +5,7 @@
 ### Two Ways to Play with the Lab
 
 1. Launch from the cloud: [Binder instance](https://mybinder.org/v2/gh/opencybersecurityalliance/black-hat-us-2024/HEAD?filepath=.)
-2. Launch as local container
+2. Launch as local container (requires `docker` and `jupyter-repo2docker`)
    ```console
    jupyter-repo2docker -p 10598 https://github.com/opencybersecurityalliance/black-hat-us-2024.git
    ```

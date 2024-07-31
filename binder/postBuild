@@ -10,12 +10,13 @@ mv data /tmp/demodata
 # get mapping files for GoldenSAML
 mapping_dir="/tmp/mapping-examples/security-datasets/GoldenSAML"
 mkdir -p $mapping_dir
-pushd $mapping_dir
+currentpwd=$(pwd)
+cd $mapping_dir
 curl -o GoldenSAML_AADAuditEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_AADAuditEvents.yaml
 curl -o GoldenSAML_Microsoft365DefenderEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_Microsoft365DefenderEvents.yaml
 curl -o GoldenSAML_OfficeActivityEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_OfficeActivityEvents.yaml
 curl -o GoldenSAML_WindowsEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_WindowsEvents.yaml
-popd
+cd $currentpwd
 
 # move analytics according to the config
 mv analytics /tmp/

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=true
+Name=kestrel-lab
+Icon=/usr/share/icons/kestrel.svg
+Exec=/usr/bin/kestrellab.sh

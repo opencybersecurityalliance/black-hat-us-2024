@@ -1,0 +1,20 @@
+name: Data-Bucket-Kestrel File Download Testing
+
+on:
+  schedule:
+    # Run this once per day, towards the end of the day for keeping the most
+    # recent data point most meaningful (hours are interpreted in UTC).
+    - cron: "55 02 * * *"
+  workflow_dispatch: # Allow for running this manually.
+
+jobs:
+  verify-stixshifter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Test fetch
+        run: |
+          code=$(curl --head https://media.githubusercontent.com/media/opencybersecurityalliance/data-bucket-kestrel/main/sqlite/bh12.db | head -n 1 | cut -d ' ' -f2)
+          if ["$code" == "404"] then exit 1 fi

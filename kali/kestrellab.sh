@@ -2,7 +2,7 @@
 
 docker ps | grep opencybersecurityalliance | cut -d ' ' -f1 | xargs docker stop
 
-nohup jupyter-repo2docker https://github.com/opencybersecurityalliance/black-hat-us-2024.git &
+nohup repo2docker https://github.com/opencybersecurityalliance/black-hat-us-2024.git &
 
 while true
 do

@@ -2,26 +2,28 @@
 kestrel_jupyter_setup
 
 # setup data from BH 2022 (backup hunt)
-git lfs install
-git clone https://github.com/opencybersecurityalliance/data-bucket-kestrel.git
-mv data-bucket-kestrel/sqlite/bh22.db data/bh22.db
-rm -rf data-bucket-kestrel
+curl -o data/bh22.db https://media.githubusercontent.com/media/opencybersecurityalliance/data-bucket-kestrel/main/sqlite/bh22.db
+
+# move all data according to the config
+mv data /tmp/demodata
 
 # get mapping files for GoldenSAML
-git clone https://github.com/opencybersecurityalliance/kestrel-lang.git
-mv kestrel-lang/mapping-examples /tmp/
-rm -rf kestrel-lang
+mapping_dir="/tmp/mapping-examples/security-datasets/GoldenSAML"
+mkdir -p $mapping_dir
+pushd $mapping_dir
+curl -o GoldenSAML_AADAuditEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_AADAuditEvents.yaml
+curl -o GoldenSAML_Microsoft365DefenderEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_Microsoft365DefenderEvents.yaml
+curl -o GoldenSAML_OfficeActivityEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_OfficeActivityEvents.yaml
+curl -o GoldenSAML_WindowsEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_WindowsEvents.yaml
+popd
+
+# move analytics according to the config
+mv analytics /tmp/
 
 # setup Kestrel config
 mkdir -p .config/kestrel
 mv config/* .config/kestrel/
 rmdir config
-
-# move all data according to the config
-mv data /tmp/demodata
-
-# move analytics according to the config
-mv analytics /tmp/
 
 # re-org the folder
 mv huntbooks/* ./

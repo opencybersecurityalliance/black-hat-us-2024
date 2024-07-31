@@ -16,5 +16,5 @@ jobs:
     steps:
       - name: Test fetch
         run: |
-          code=$(curl --head https://media.githubusercontent.com/media/opencybersecurityalliance/data-bucket-kestrel/main/sqlite/bh22.db | head -n 1 | cut -d ' ' -f2)
-          if ["$code" == "404"] then exit 1 fi
+          code=$(curl --head https://media.githubusercontent.com/media/opencybersecurityalliance/data-bucket-kestrel/main/sqlite/bh12.db | head -n 1 | cut -d ' ' -f2)
+          if [ "$code" == "404" ]; then exit 1; fi

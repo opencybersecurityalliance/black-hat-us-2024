@@ -15,3 +15,4 @@ repo2docker https://github.com/opencybersecurityalliance/black-hat-us-2024.git
 ## 4. Launch Lab with Gnome Launcher
 
 Type `kestrel` in gnome launcher to pop the lab to launch
+![Launch Kestrel Lab](launch.png)

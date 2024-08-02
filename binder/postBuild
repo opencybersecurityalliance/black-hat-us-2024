@@ -33,5 +33,4 @@ echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.
 # clean up; leave only huntbooks
 mv huntbooks/* ./
 jupyter trust *.ipynb
-ls | grep -v *.ipynb
-ls | grep -v *.ipynb | xargs rm -rf
+ls | grep -v '.ipynb$' | xargs rm -rf

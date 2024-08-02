@@ -7,6 +7,9 @@ curl -o data/bh22.db https://media.githubusercontent.com/media/opencybersecurity
 # move all data according to the config
 mv data /tmp/demodata
 
+# move analytics according to the config
+mv analytics /tmp/
+
 # get mapping files for GoldenSAML
 mapping_dir="/tmp/mapping-examples/security-datasets/GoldenSAML"
 mkdir -p $mapping_dir
@@ -18,24 +21,16 @@ curl -o GoldenSAML_OfficeActivityEvents.yaml https://raw.githubusercontent.com/o
 curl -o GoldenSAML_WindowsEvents.yaml https://raw.githubusercontent.com/opencybersecurityalliance/kestrel-lang/develop/mapping-examples/security-datasets/GoldenSAML/GoldenSAML_WindowsEvents.yaml
 cd $currentpwd
 
-# move analytics according to the config
-mv analytics /tmp/
-
 # setup Kestrel config
 mkdir -p .config/kestrel
 mv config/* .config/kestrel/
-rmdir config
 
-# re-org the folder
-mv huntbooks/* ./
-rmdir huntbooks
-jupyter trust *.ipynb
-
-# unset pwd
+# unset jupyter login token
 mkdir -p ~/.jupyter
 echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
 echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py
 
-# clean up
-rm -rf kali
-rm -rf binder
+# clean up; leave only huntbooks
+mv huntbooks/* ./
+jupyter trust *.ipynb
+ls | grep -v *.ipynb | xargs rm -rf

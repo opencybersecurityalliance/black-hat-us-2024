@@ -1,6 +1,8 @@
 # Black Hat USA 2024 Arsenal Lab
 
-[Kestrel 2: Hunt For Threats Across Security Data Lakes](https://www.blackhat.com/us-24/arsenal/schedule/index.html#kestrel--hunt-for-threats-across-security-data-lakes-39321)
+Session: [Kestrel 2: Hunt For Threats Across Security Data Lakes](https://www.blackhat.com/us-24/arsenal/schedule/index.html#kestrel--hunt-for-threats-across-security-data-lakes-39321)
+
+The tool: [Kestrel](https://github.com/opencybersecurityalliance/kestrel-lang)
 
 ### Two Ways to Play with the Lab
 

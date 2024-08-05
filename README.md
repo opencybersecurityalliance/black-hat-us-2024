@@ -4,6 +4,8 @@ Session: [Kestrel 2: Hunt For Threats Across Security Data Lakes](https://www.bl
 
 Tool: [Kestrel](https://github.com/opencybersecurityalliance/kestrel-lang)
 
+Slides: [BH24 Kestrel Slides](https://github.com/opencybersecurityalliance/black-hat-us-2024/blob/main/slides.pdf)
+
 ### Two Ways to Play with the Lab
 
 1. Launch from the cloud: [Binder instance](https://mybinder.org/v2/gh/opencybersecurityalliance/black-hat-us-2024/HEAD?filepath=.)
